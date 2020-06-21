@@ -4,7 +4,7 @@
 
 後端則是處理隱藏在畫面後面，以 server 處理資料的部分。接收瀏覽器送來的 request，將資料寫入 database 並依據 database 的資訊做出 response。像是使用者輸入帳號、密碼時，後端會協助驗證帳號是否存在、密碼是否正確等等。
 
-## 假設我今天去 Google 首頁搜尋框打上：JavaScri[t 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
+## 假設我今天去 Google 首頁搜尋框打上：JavaScript 並且按下 Enter，請說出從這一刻開始到我看到搜尋結果為止發生在背後的事情。
 
 1. 使用者透過瀏覽器發出請求，通過電腦作業系統及硬體（網路卡）將 request 送出
 2. 透過 DNS（Domain Name System）得知 server 的 IP 位置
