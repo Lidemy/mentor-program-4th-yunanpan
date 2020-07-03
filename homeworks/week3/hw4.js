@@ -11,7 +11,7 @@ rl.on('line', (line) => {
   lines.push(line);
 });
 
-function reverseStr(str) {
+function isPalindrome(str) {
   // 反轉字串
   let s = '';
   for (let i = str.length - 1; i >= 0; i -= 1) {
@@ -28,7 +28,7 @@ function reverseStr(str) {
 
 function solve(input) {
   const str = input[0];
-  if (reverseStr(str)) {
+  if (isPalindrome(str)) {
     console.log('True');
   } else {
     console.log('False');
