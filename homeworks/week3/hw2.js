@@ -23,7 +23,7 @@ function isNarcissistic(num) {
 
 function solve(input) {
   const [n, m] = input[0].split(' ');
-  // 看是幾位數
+
   for (let i = Number(n); i <= Number(m); i += 1) { // 注意 string + number 會是 string
     if (isNarcissistic(i)) {
       console.log(i);
