@@ -17,36 +17,26 @@ function whoWins(n) {
   const k = Number(n[2]);
 
   // 如果 number 大於 MAX_safe_integer (2 的 53 次方 - 1 => 9007199254740991)
-  if (a.length > 15 || b.length > 15) {
-    // 比較 a、b 的長度
-    if (a.length > b.length) {
-      return k === 1 ? 'A' : 'B';
-    }
-    if (a.length < b.length) {
-      return k === -1 ? 'A' : 'B';
-    }
-    if (a.length === b.length) {
-      // 比較字典序
-      for (let i = 0; i < a.length; i += 1) {
-        if (a[i] > b[i]) {
-          return k === 1 ? 'A' : 'B';
-        }
-        if (a[i] < b[i]) {
-          return k === -1 ? 'A' : 'B';
-        }
-      }
-      // return 'DRAW';
-    }
-  } else { // 都沒有超過最大值
-    // 比較 a 和 b 誰大誰小
-    if (Number(a) > Number(b)) {
-      return k === 1 ? 'A' : 'B';
-    }
-    if (Number(a) < Number(b)) {
-      return k === -1 ? 'A' : 'B';
-    }
-    // return 'DRAW';
+  // 在比較時會有精確度的問題，所以改用判斷位數來比大小
+  // 比較 a、b 的長度（位數）
+  if (a.length > b.length) {
+    return k === 1 ? 'A' : 'B';
   }
+  if (a.length < b.length) {
+    return k === -1 ? 'A' : 'B';
+  }
+  if (a.length === b.length) {
+    // 從最前面的數字比較字典序（alphanumeric）
+    for (let i = 0; i < a.length; i += 1) {
+      if (a[i] > b[i]) {
+        return k === 1 ? 'A' : 'B';
+      }
+      if (a[i] < b[i]) {
+        return k === -1 ? 'A' : 'B';
+      }
+    }
+  }
+  // 以上的情況都沒有發生就是平手
   return 'DRAW';
 }
 
