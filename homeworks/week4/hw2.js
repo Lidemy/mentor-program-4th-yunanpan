@@ -48,7 +48,6 @@ if (process.argv[2] === 'create') {
       url: 'https://lidemy-book-store.herokuapp.com/books',
       form:
         {
-          // 沒有指定 id 會是隨機的數字
           name: bookName,
         },
     },
