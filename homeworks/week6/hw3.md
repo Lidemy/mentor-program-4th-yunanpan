@@ -91,7 +91,7 @@ HTML 的元素都可以視為一個盒子。
 * **inline：**
   1. 尺寸就是內容，無法靠 `height` 與 `width` 設定長寬。
   2. 設定上下的 padding 時，看似面積有變大，但實際的高度依舊是一行的高度。  
-     如下圖所示，灰色區塊是 `display: inline` 並且設定 `padding` 和粉紅色 `display: block` 排起來的樣子，可以看到灰色和粉紅色的區塊疊在一起，表示灰色 `inline` 區塊的高度並沒有隨 `padding` 的值而增高。
+     如下圖所示，灰色區塊是 `display: inline` 並且設定 `padding` 和粉紅色 `display: block` 排起來的樣子，可以看到灰色和粉紅色的區塊疊在一起，表示灰色 `inline` 區塊的高度並沒有隨 `padding` 的值而增高。而要以 `margin` 調整上下時也無效。
   ![inline padding](./hw3_img/inline.png)
   3. `inline` 可以排在同一行。
    ![inline](./hw3_img/inline2.png)
