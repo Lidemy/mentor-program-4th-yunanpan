@@ -48,7 +48,7 @@ banner section
 }
 
 .banner__img {
-  background-image: url('/img/2-min.png');
+  background-image: url('../img/2-min.png');
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

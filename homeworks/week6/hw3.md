@@ -88,27 +88,29 @@ HTML 的元素都可以視為一個盒子。
 
 ## 請問 display: inline, block 跟 inline-block 的差別是什麼？
 
-* inline：
+* **inline：**
   1. 尺寸就是內容，無法靠 `height` 與 `width` 設定長寬。
   2. 設定上下的 padding 時，看似面積有變大，但實際的高度依舊是一行的高度。  
      如下圖所示，灰色區塊是 `display: inline` 並且設定 `padding` 和粉紅色 `display: block` 排起來的樣子，可以看到灰色和粉紅色的區塊疊在一起，表示灰色 `inline` 區塊的高度並沒有隨 `padding` 的值而增高。
   ![inline padding](./hw3_img/inline.png)
   3. `inline` 可以排在同一行。
    ![inline](./hw3_img/inline2.png)
-* block：
+   4. 使用時機：想讓元素在同一行排列且沒有要設定寬高時使用。 `<a>`、`<span>` 等原來設定就是 `inline`。
+* **block：**
   1. 尺寸可以以 `height` 和 `width` 來設定。
   2. 承第 1 點，所以設定 `padding` 時是有作用的。  
      灰色區域是有設定寬高及 `padding` 的 `block`，可以看到與粉紅色的區塊並沒有疊在一起，設定的高與 `padding` 都有算在高度裡。
    ![block padding](./hw3_img/block.png)
   3. `block` 會自己占據一整排。
    ![block](./hw3_img/block2.png)
-* inline-block：
+   4. 使用時機：當元素要占據一整行時。`<div>`、`<h1>`、`<p>` 的預設值為 `block`。
+* **inline-block：**
   1. `inline-block` 可以說是 `inline` 和 `block` 的小孩，結合了 `inline` 可以排在同一行及 `block` 可以設定高寬的特性。如下圖是將灰色及粉紅色都調整為 `display: inline-block` 後的排版：
    ![inline-block](./hw3_img/inline-block.png)
   2. 灰色與粉紅色區塊中的空白，是由於在寫 html 時 `div` 和 `div` 之間有字元空格所產生的。
      * > 調整父層的 `font-size: 0`
      * > 用 comment <* *> 夾在中間   
-    
+  3. 使用時機：希望可以像 `inline` 一樣可以併排，但又想要可以像 `block` 一樣可以條寬高時使用。
 
 ## 請問 position: static, relative, absolute 跟 fixed 的差別是什麼？分別各舉一個會用到的場合
 
