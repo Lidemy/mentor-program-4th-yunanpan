@@ -24,9 +24,9 @@
 }
 
 .navbar__option {
+  display: inline-block;
   width: 110px;
   height: 44px;
-  display: inline-block;
   text-align: center;
   line-height: 44px;
   border-radius: 8px;
@@ -90,6 +90,7 @@ banner section
 
 .section__full {
   text-align: center;
+  margin: auto;
 }
 
 /* 要有 line-height => vertical-align 才有用 */
@@ -111,7 +112,7 @@ banner section
 
 .info__desc {
   font-size: 16px;
-  line-height: 2em;
+  line-height: 2.5em;
 }
 
 .info__btns {
@@ -147,6 +148,7 @@ Menu 搶先看
 
 .menu__images {
   display: flex;
+  justify-content: center;
 }
 
 .menu__image img{
@@ -166,11 +168,8 @@ Menu 搶先看
   margin-bottom: 40px;
 }
 
-/* TODO:因為 comments__desc 往下移 50px
+/* 因為 comments__desc 往下移 40px
 會影響與下面的 section 的間距，所以在這邊用 margin-bottom 去平衡 */
-
-/* TODO:縮放的時候國父桑和青蛙會縮小，但可達鴨不會一起等比縮小 */
-/* 試過 flex-shrink 但沒作用，不知道是哪裡有問題 */
 
 .comments__comment {
   position: relative;
@@ -181,34 +180,41 @@ Menu 搶先看
   margin: 0 5px;
 }
 
-.comments__info {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  z-index: 1;
-}
-
-.comments__info img {
+.comments__info-img {
+  /* position: absolute; */
+  position: relative;
   width: 105px;
   height: 105px;
   border: solid 1px #c7e5ec;
   border-radius: 50%;
+  overflow: hidden;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+
+.comments__info-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.comments__info-name {
+  margin-top: 5px;
+}
+
+.comments__border {
+  border: solid 1px #c7e5ec;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 52.5px;
 }
 
 .comments__desc {
-  border: solid 1px #c7e5ec;
-  position: relative;
-  height: 100%;
-  top: 40px;
-  box-sizing: border-box;
-  padding: 80px 5px 40px;
-}
-
-/* z-index 要搭配 position 使用 */
-
-.comments__desc p {
   font-size: 16px;
+  margin-top: 10px;
+  padding: 0 5px;
 }
 
 /*  
@@ -222,18 +228,19 @@ footer
 }
 
 .footer__top {
-  max-width: 1360px;
   padding: 0 50px;
   height: 186px;
   background-color: #e8efee;
 }
 
 .footer__top-center {
+  max-width: 1360px;
   display: flex;
   justify-content: space-between;
   position: relative;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .footer__info p{
@@ -362,21 +369,25 @@ footer
     flex-direction: column;
   }
 
+  .comments__comment:nth-child(2) {
+    margin: 0;
+  }
+
   .comments__comment + .comments__comment{
     margin-top: 50px;
   }
 
-  .comments__info img {
+  .comments__info-img {
     width: 80px;
     height: 80px;
   }
 
   .comments__desc {
-    top: 25px;
+    font-size: 14px;
   }
 
-  .comments__desc p {
-    font-size: 14px;
+  .comments__border {
+    top: 40px;
   }
 
   /*  
