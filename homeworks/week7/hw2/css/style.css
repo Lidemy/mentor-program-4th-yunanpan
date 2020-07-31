@@ -90,17 +90,32 @@ questions
   display: inline-block;
 }
 
-.question__topic {
+.question__topic, .question__topic-list {
   font-size: 18px;
   /* 為了讓 num 與 topic 對齊 => 設定相同 line-height */
   line-height: 24px;
 }
 
+.question__topic:hover {
+  cursor: pointer;
+}
+
+/*  
+========================
+操控 question 開關的樣式
+========================
+*/
+.question__answer-hidden {
+  display: none;
+}
+
 .question__answer {
+  position: relative;
   font-size: 16px;
   letter-spacing: 0.15px;
   margin-top: 24px;
 }
+
 
 /*  
 ===============
