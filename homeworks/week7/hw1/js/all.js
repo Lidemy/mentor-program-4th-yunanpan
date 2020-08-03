@@ -20,14 +20,13 @@ document.querySelector('form').addEventListener('submit', (e) => {
   inputs.forEach(input => answerText(input));
 
   // radio 的情況
-  const radiosCheck = document.querySelector('.required input[type=radio]:checked');
+  const radiosCheck = document.querySelector('.required input[type=radio]:checked'); // 有打勾的情況
   const radios = document.querySelector('.required input[type=radio]');
   if (radiosCheck) {
     radios.parentNode.parentNode.classList.add('hide');
     const question = radios.parentNode.parentNode.querySelector('div').innerText;
     const answer = radiosCheck.parentNode.innerText;
     alertMessage.push({ question, answer });
-    // alertMessage[question] = answer
   } else {
     radios.parentNode.parentNode.classList.remove('hide');
     hasError = true;

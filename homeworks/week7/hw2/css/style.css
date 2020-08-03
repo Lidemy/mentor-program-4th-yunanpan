@@ -72,6 +72,7 @@ questions
   padding: 25px 0;
   border-bottom: 1px solid #a6e2c0;
   display: flex;
+  cursor: pointer;
 }
 
 .question__num {
@@ -96,16 +97,13 @@ questions
   line-height: 24px;
 }
 
-.question__topic:hover {
-  cursor: pointer;
-}
-
 /*  
 ========================
 操控 question 開關的樣式
 ========================
 */
-.question__answer-hidden {
+
+.question__answer-hidden p {
   display: none;
 }
 
