@@ -29,59 +29,55 @@
       </p>
 
       <!-- 問題 -->
-      <div>
-          <div>
-            <label for="name" class="form__label form__label-require">暱稱</label>
-            <input type="text" placeholder="您的回答" id="name" class="form__input" required>
-            <div class="remind__off">請填寫此欄</div>
-          </div>
+      <form>
+        <div class="required hide">
+          <label for="name" class="form__label form__label-require">暱稱</label>
+          <input type="text" placeholder="您的回答" id="name" class="form__input">
+          <div class="form__error">請填寫此欄</div>
+        </div>
 
-          <div>
-            <label for="email" class="form__label form__label-require">電子郵件</label>
-            <input type="email" placeholder="您的電子郵件" id="email" class="form__input" required>
-            <div class="remind__off">請填寫此欄</div>
-          </div>
-    
-          <div>
-            <label for="number" class="form__label form__label-require">手機號碼</label>
-            <input type="text" placeholder="您的手機號碼" id="number"class="form__input" required>
-            <div class="remind__off">請填寫此欄</div>
-          </div>
-    
-          <div>
-            <div class="form__label form__label-require" id="type">報名類型</div>
-            <div class="form__radio">
-              <label>
-                <input type="radio" id="imagination" name="types" value="imagination">
-                躺在床上用想像力實作
-              </label>
-            </div>
-            <div class="form__radio">
-              <label>
-                <input type="radio" id="readyMake" name="types" value="readyMake">
-                趴在地上滑手機找現成的
-              </label>
-            </div>
-            <div class="remind__off">請填寫此欄</div>
-          </div>
-
-          <div>
-            <label for="how" class="form__label form__label-require">怎麼知道這個活動的？</label>
-            <input type="text" placeholder="您的回答" id="how" class="form__input" required>
-            <div class="remind__off">請填寫此欄</div>
-          </div>
-    
-          <label for="other" class="form__label">
-            <div>其他</div>
-            <p>對活動的一些建議</p>
-            <input type="text" placeholder="您的回答" id="other" class="form__input">
+        <div class="required hide">
+          <label for="email" class="form__label form__label-require">電子郵件</label>
+          <input type="text" placeholder="您的電子郵件" id="email" class="form__input">
+          <div class="form__error">請填寫此欄</div>
+        </div>
+  
+        <div class="required hide">
+          <label for="number" class="form__label form__label-require">手機號碼</label>
+          <input type="text" placeholder="您的手機號碼" id="number"class="form__input">
+          <div class="form__error">請填寫此欄</div>
+        </div>
+  
+        <div class="required hide">
+          <div class="form__label form__label-require" id="type">報名類型</div>
+          <label class="form__radio">
+            <input type="radio" id="imagination" name="types" value="imagination">
+            躺在床上用想像力實作
           </label>
+          <label class="form__radio">
+            <input type="radio" id="readyMake" name="types" value="readyMake">
+            趴在地上滑手機找現成的
+          </label>
+          <div class="form__error">請填寫此欄</div>
+        </div>
+
+        <div class="required hide">
+          <label for="how" class="form__label form__label-require">怎麼知道這個活動的？</label>
+          <input type="text" placeholder="您的回答" id="how" class="form__input">
+          <div class="form__error">請填寫此欄</div>
+        </div>
+  
+        <div class="form__label">
+          <div>其他</div>
+          <p>對活動的一些建議</p>
+          <input type="text" placeholder="您的回答" class="form__input">
+        </div>
 
     
         <input type="submit" value="提交" class="form__submit">
         <p class="form__remind">請勿透過表單送出您的密碼</p>
         
-      </div>
+      </form>
     </div>
   </div>
 

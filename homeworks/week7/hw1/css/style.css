@@ -61,11 +61,11 @@ body {
   border: solid 1px #d0d0d0;
   box-sizing: border-box;
   padding-left: 5px;
-  /* margin-bottom: 49px; */
 }
 
 .form__radio {
   font-size: 14px;
+  display: block;
 }
 
 .form__radio + .form__radio {
@@ -101,15 +101,16 @@ body {
   line-height: 60px;
 }
 
-.remind__off {
-  position: absolute;
-  color: transparent;
+.hide .form__error {
+  visibility: hidden;
 }
 
-.remind__on {
+
+.form__error {
   color: red;
   font-size: 14px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
+  position: absolute;
 }
 
 @media screen and (max-width: 768px) {
@@ -140,13 +141,8 @@ body {
     margin-bottom: 10px;
   }
 
-  .form__input {
-    /* width: 100%; */
-    margin-bottom: 20px;
-  }
-
   .form__radio + .form__radio {
-    margin: 5px 0 20px;
+    margin: 5px 0 0;
   }
 
   .form__submit {
