@@ -78,14 +78,10 @@
   padding-left: 30px;
   color: #FCFAF2;
   font-weight: bold;
-}
-
-.todo__content:hover {
   cursor: pointer;
 }
 
 .todo__content:hover .todo__checkbox{
-  cursor: pointer;
   background-color: #006284;
 }
 
@@ -134,8 +130,7 @@
   text-decoration-color: #006284;
 }
 
-
-.todo__check {
+.todo__finished .todo__checkbox {
   width: 20px;
   height: 20px;
   background-color: #006284;
@@ -147,7 +142,7 @@
   transform: translateY(-50%);
 }
 
-.todo__check::before {
+.todo__finished .todo__checkbox::before {
   content: '';
   position: absolute;
   left: 6px;
@@ -158,3 +153,28 @@
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+
+
+/* .todo__check {
+  width: 20px;
+  height: 20px;
+  background-color: #006284;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 98, 132, .3);
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+} */
+
+/* .todo__check::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #FCFAF2;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+} */
