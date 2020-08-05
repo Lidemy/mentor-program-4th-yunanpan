@@ -1,0 +1,180 @@
+.wrap {
+  max-width: 960px;
+  background-color: #A5DEE4;
+  margin: 20px auto;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.todo__title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #006284;
+}
+
+.todo__wrap {
+  width: 80%;
+  margin: 0 auto 20px;
+}
+
+.todo__input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.todo__input input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 98, 132, .3);
+  line-height: 30px;
+  background-color: #FCFAF2;
+  color: #006284;
+}
+
+/* outline 不能調整 radius，所以如果想在 focus 時加邊框可用 box-shadow 達成 */
+.todo__input input:focus {
+  outline: none;
+  box-shadow: 0px 0px 0pt 1pt #006284;
+}
+
+.todo__content input {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  z-index: 1;
+}
+
+.todo__checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #FCFAF2;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 98, 132, .3);
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+}
+
+.todo__lists {
+  position: relative;
+}
+
+.todo__list {
+  position: relative;
+  text-align: left;
+}
+
+.todo__content {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  padding-left: 30px;
+  color: #FCFAF2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.todo__content:hover .todo__checkbox{
+  background-color: #006284;
+}
+
+.todo__delete {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.todo__delete::before, .todo__delete::after {
+  content: '';
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #006284;
+}
+
+.todo__delete::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.todo__delete::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.todo__delete:hover {
+  cursor: pointer;
+  top: 40%;
+}
+
+/* ========
+  JS 控制
+===========*/
+
+/* 完成 */
+.todo__finished {
+  text-decoration: line-through;
+  text-decoration-color: #006284;
+}
+
+.todo__finished .todo__checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #006284;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 98, 132, .3);
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+}
+
+.todo__finished .todo__checkbox::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #FCFAF2;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+
+/* .todo__check {
+  width: 20px;
+  height: 20px;
+  background-color: #006284;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 98, 132, .3);
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+} */
+
+/* .todo__check::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #FCFAF2;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+} */

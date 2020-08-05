@@ -1,0 +1,254 @@
+nav {
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar {
+  max-width: 1360px;
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin: auto;
+  align-items: center;
+}
+
+.navbar__logo {
+  color: #489846;
+  font-size: 36px;
+}
+
+.navbar__options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar__option {
+  font-size: 18px;
+  color: #010101;
+}
+
+.navbar__option {
+  display: inline-block;
+  width: 110px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  border-radius: 8px;
+}
+
+.navbar__active {
+  background-color: #ff7286;
+  color: #fefefe;
+}
+
+/*  
+=======================
+questions
+=======================
+*/
+
+/* margin:0 auto一定要配合設定width的屬性才可以運做 */
+
+.title {
+  display: inline-block;
+  padding-left: 15px;
+  font-size: 36px;
+  font-weight: bold;
+  border-left: 15px solid #a3dea2;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 76px 0 60px;
+}
+
+.questions {
+  max-width: 820px;
+  text-align: start;
+  margin: auto;
+  padding: 0 50px;
+}
+
+.question {
+  padding: 25px 0;
+  border-bottom: 1px solid #a6e2c0;
+  display: flex;
+  cursor: pointer;
+}
+
+.question__num {
+  display: inline-block;
+  color: #70b282;
+  font-size: 24px;
+  letter-spacing: 0.25px;
+  margin-right: 16px;
+  width: 34px;
+  /* 為了讓 num 與 topic 對齊 => 設定相同 line-height */
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.question__content {
+  display: inline-block;
+}
+
+.question__topic, .question__topic-list {
+  font-size: 18px;
+  /* 為了讓 num 與 topic 對齊 => 設定相同 line-height */
+  line-height: 24px;
+}
+
+/*  
+========================
+操控 question 開關的樣式
+========================
+*/
+
+.question__answer-hidden p {
+  display: none;
+}
+
+.question__answer {
+  position: relative;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  margin-top: 24px;
+}
+
+
+/*  
+===============
+footer
+===============
+*/
+
+.footer {
+  margin-top: 40px;
+}
+
+.footer__top {
+  padding: 0 50px;
+  height: 186px;
+  background-color: #e8efee;
+}
+
+.footer__top-center {
+  max-width: 1360px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer__info p{
+  font-size: 14px;
+  color: #484848;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+.footer__contact h3 {
+  color: #489846;
+  font-size: 36px;
+}
+
+.footer__contact p {
+  color: #484848;
+  font-size: 14px;
+}
+
+.footer__bottom {
+  height: 48px;
+  line-height: 48px;
+  background-color: #35564b;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ==========================================
+                    RWD
+========================================== */
+
+@media screen and (max-width: 768px) {
+  /*  
+  ===============
+  navbar section
+  ===============
+  */
+
+  .navbar {
+    padding: 0px;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .navbar__options {
+    width: 100%;
+  }
+  
+  .navbar__option {
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  /*  
+  ===============
+  question
+  ===============
+  */
+  .title {
+    font-size: 24px;
+    left: 0%;
+    transform: translateX(-0%);
+    margin: 32px 0 20px 50px;
+  }
+
+  .question {
+    padding: 10px 0;
+  }
+  
+  .question__num {
+    font-size: 16px;
+    width: 20px;
+    line-height: 16px;
+  }
+  
+  .question__topic {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  
+  .question__answer {
+    font-size: 12px;
+    margin-top: 8px;
+    padding-right: 5px;
+  }
+
+  /*  
+  ===============
+  footer
+  ===============
+  */
+  .footer__top-center {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info p{
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .footer__contact {
+    margin-bottom: 10px;
+  }
+
+  .footer__contact h3 {
+    font-size: 28px;
+  }
+
+  .footer__bottom {
+    font-size: 10px;
+  }
+}
