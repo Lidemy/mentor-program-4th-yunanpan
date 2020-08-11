@@ -33,7 +33,7 @@ function getGames(fn) {
 // 2. 指定遊戲前 20 名的直播
 function getStreams(gameName, fn) {
   const request = new XMLHttpRequest();
-  request.open('GET', `${streamURL}?game=${gameName}`, true);
+  request.open('GET', `${streamURL}?game=${encodeURIComponent(gameName)}`, true);
 
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.setRequestHeader('Client-ID', 'yoshvqznzi8j2ild4h8k8il4iultit');
