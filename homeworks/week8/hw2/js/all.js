@@ -11,18 +11,19 @@ function getGames(fn) {
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.setRequestHeader('Client-ID', 'yoshvqznzi8j2ild4h8k8il4iultit');
 
-  request.onload = () => { // eslint-disable-line consistent-return
+  request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       let data;
       try {
         data = JSON.parse(request.responseText);
       } catch (e) {
-        return console.log('error');
+        console.log('error');
+        return; // 有錯就不往下執行 return 跳開
       }
       // 如果資料沒問題，看要用什麼 callback function 去處理得到的資料
       fn(data);
     } else {
-      return console.log('error');
+      console.log('error');
     }
   };
 
@@ -37,17 +38,18 @@ function getStreams(gameName, fn) {
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
   request.setRequestHeader('Client-ID', 'yoshvqznzi8j2ild4h8k8il4iultit');
 
-  request.onload = () => { // eslint-disable-line consistent-return
+  request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       let list;
       try {
         list = JSON.parse(request.responseText);
       } catch (e) {
-        return console.log('error');
+        console.log('error');
+        return;
       }
       fn(gameName, list);
     } else {
-      return console.log('error');
+      console.log('error');
     }
   };
   request.send();
