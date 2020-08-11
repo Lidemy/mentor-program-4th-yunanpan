@@ -45,13 +45,14 @@ function getResult(result) {
 function getPrize(fn) {
   const request = new XMLHttpRequest();
   request.open('GET', urlAPI, true);
-  request.onload = () => { // eslint-disable-line consistent-return
+  request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       let result;
       try {
         result = JSON.parse(request.responseText).prize;
       } catch (e) {
-        return alert(errMessage);
+        alert(errMessage);
+        return;
       }
       fn(result);
     } else {
