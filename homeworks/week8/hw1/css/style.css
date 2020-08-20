@@ -1,0 +1,300 @@
+nav {
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar {
+  max-width: 1360px;
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin: auto;
+  align-items: center;
+}
+
+.navbar__logo {
+  color: #489846;
+  font-size: 36px;
+}
+
+.navbar__options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar__option {
+  font-size: 18px;
+  color: #010101;
+}
+
+.navbar__option {
+  display: inline-block;
+  width: 110px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  border-radius: 8px;
+}
+
+.navbar__active {
+  background-color: #ff7286;
+  color: #fefefe;
+}
+
+/*  
+=======================
+抽獎
+=======================
+*/
+
+.prize {
+  background-image: url("../img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: bottom;
+  display: flex;
+  min-height: 90vh;
+  padding: 20px 0;
+  box-sizing: border-box;
+  /* 如果有內容的話可以用 padding margin 去撐高度，比起定死高度，在 RWD 時會比較不會跑版 */
+}
+
+.prize__wrap {
+  width: 500px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  margin: auto;
+  padding: 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.prize__title {
+  color: #5ec1b6;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.prize__desc {
+  display: flex;
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 24px;
+}
+
+.prize__desc + .prize__desc {
+  padding-top: 24px;
+}
+
+.prize__desc-title {
+  color: #322929;
+  font-weight: bold;
+  font-size: 18px;
+  /* 為了讓 title 和 content 看起來比較齊 */
+  line-height: 1.2em;
+}
+
+.prize__desc-content {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.prize__btn {
+  color: #ffffff;
+  background-color: #5ec1b6;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  border-radius: 8px;
+  width: 400px;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  margin: 40px auto 0;
+  cursor: pointer;
+}
+
+/* 抽獎結果 */
+
+.prize__first {
+  /* first */
+  background-image: url("../img/first.jpg");
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.prize__second {
+  /* second */
+  background-image: url("../img/second.jpg");
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.prize__third {
+  /* third */
+  background-image: url("../img/third.jpg");
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.prize__none {
+  background-image: none;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.prize__result {
+  height: 150px;
+  position: relative;
+  margin: 50px auto;
+}
+
+.prize__result-title {
+  color: #ffffff;
+  font-size: 36px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+/*  
+===============
+footer
+===============
+*/
+
+.footer__top {
+  padding: 0 50px;
+  height: 186px;
+  background-color: #e8efee;
+}
+
+.footer__top-center {
+  max-width: 1360px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer__info p{
+  font-size: 14px;
+  color: #484848;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+.footer__contact h3 {
+  color: #489846;
+  font-size: 36px;
+}
+
+.footer__contact p {
+  color: #484848;
+  font-size: 14px;
+}
+
+.footer__bottom {
+  height: 48px;
+  line-height: 48px;
+  background-color: #35564b;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ==========================================
+                    RWD
+========================================== */
+
+@media screen and (max-width: 768px) {
+  /*  
+  ===============
+  navbar section
+  ===============
+  */
+
+  .navbar {
+    padding: 0px;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .navbar__options {
+    width: 100%;
+  }
+  
+  .navbar__option {
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  /*  
+  ===============
+  prize
+  ===============
+  */
+
+  .prize__wrap {
+    max-width: 500px;
+    width: 80%;
+    padding: 15px;
+  }
+
+  .prize__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .prize__desc {
+    flex-direction: column;
+    padding-bottom: 12px;
+  }
+  
+  .prize__desc + .prize__desc {
+    padding-top: 12px;
+  }
+  
+  .prize__desc-title {
+    font-size: 16px;
+  }
+  
+  .prize__desc-content {
+    font-size: 14px;
+  }
+
+  .prize__btn {
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    margin: 20px auto 0;
+  }
+
+  /*  
+  ===============
+  footer
+  ===============
+  */
+  .footer__top-center {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info p{
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .footer__contact {
+    margin-bottom: 10px;
+  }
+
+  .footer__contact h3 {
+    font-size: 28px;
+  }
+
+  .footer__bottom {
+    font-size: 10px;
+  }
+}
