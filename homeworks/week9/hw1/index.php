@@ -20,7 +20,8 @@
     $username = $_SESSION["username"];
   }
 
-  $result = $conn->query("SELECT * FROM comments ORDER BY id DESC");
+  $sql = "SELECT * FROM yunanpan_comments ORDER BY id DESC";
+  $result = $conn->query($sql);
   if (!$result) {
     die('Error:' . $conn->error);
   }

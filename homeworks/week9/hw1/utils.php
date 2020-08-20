@@ -13,7 +13,7 @@ function createToken() {
 
 function getName($username) {
   global $conn;
-  $sql = sprintf("SELECT * FROM users WHERE username = '%s'",
+  $sql = sprintf("SELECT * FROM yunanpan_users WHERE username = '%s'",
     $username
   );
   $result = $conn->query($sql);

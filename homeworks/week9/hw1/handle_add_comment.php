@@ -24,7 +24,7 @@ if (empty($nickname) || empty($content)) {
   die("資料不齊全");
 }
 // 2-2. 有拿到的話將資料存入資料庫
-$sql = sprintf("INSERT INTO comments (nickname, content) VALUES ('%s', '%s')",
+$sql = sprintf("INSERT INTO yunanpan_comments (nickname, content) VALUES ('%s', '%s')",
   $nickname,
   $content
 );

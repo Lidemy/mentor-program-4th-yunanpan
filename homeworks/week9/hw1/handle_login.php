@@ -16,7 +16,7 @@
   }
 
   // 看輸入的帳密是否有符合資料庫
-  $sql = sprintf("SELECT * FROM users WHERE username = '%s' and password = '%s'",
+  $sql = sprintf("SELECT * FROM yunanpan_users WHERE username = '%s' and password = '%s'",
     $username,
     $password
   );

@@ -1,7 +1,7 @@
 <?php
   require_once("conn.php");
 
-  $result = $conn->query("SELECT * FROM comments ORDER BY id DESC");
+  $result = $conn->query("SELECT * FROM yunanpan_comments ORDER BY id DESC");
   if (!$result) {
     die('Error:' . $conn->error);
   }

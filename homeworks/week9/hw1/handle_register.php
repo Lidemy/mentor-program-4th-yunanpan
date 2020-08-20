@@ -15,7 +15,7 @@
   }
 
   // 寫入資料庫
-  $sql = sprintf("INSERT INTO users (nickname, username, password) VALUES ('%s', '%s', '%s')",
+  $sql = sprintf("INSERT INTO yunanpan_users (nickname, username, password) VALUES ('%s', '%s', '%s')",
     $nickname,
     $username,
     $password
