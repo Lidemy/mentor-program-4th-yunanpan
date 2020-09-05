@@ -1,0 +1,300 @@
+body {
+  background-color: #f3f4f7;
+}
+
+.warning {
+  background-color: #F8C3CD;
+  color: #D0104C;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.board {
+  max-width: 600px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.board__head {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px;
+}
+
+.board__connect-btn {
+  line-height: 36px;
+  font-size: 14px;
+  color: #33A6B8;
+  padding: 5px 10px;
+  border: 1px solid #A5DEE4;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.board__connect-btn:hover {
+  background-color: #A5DEE4;
+  color: white;
+}
+
+.board__title {
+  display: inline-block;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.board__input {
+  display: flex;
+  margin: 0 0 10px;
+}
+
+.board__input p {
+  align-self: center;
+  font-size: 16px;
+}
+
+.board__input input {
+  flex: 1;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  padding: 0 5px;
+  line-height: 24px;
+}
+
+.board__welcome {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #33A6B8;
+}
+
+.board__comment {
+  display: inline-block;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #caccd1;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+
+.board__input input:focus, .board__comment:focus {
+  outline: none;
+  border: 1px solid #A5DEE4;
+}
+
+
+.board__btn {
+  padding: 5px 10px;
+  border: 1px solid #d1d1d1;
+  background-color: transparent;
+  border-radius: 3px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.board__btn:hover {
+  background-color: #caccd1;
+}
+
+.board__form {
+  border-bottom: 1px solid #caccd1;
+  padding: 0 0 20px;
+  margin: 0 0 20px;
+}
+
+.board__warning {
+  font-size: 16px;
+  text-align: center;
+  background-color: #d1d1d1;
+  border-radius: 3px;
+  display: block;
+  padding: 5px 0;
+}
+
+/* ======= */
+/*  留言們  */
+/* ======= */
+
+.comment {
+  display: flex;
+  width: 100%;
+}
+
+.comment + .comment {
+  margin-top: 20px;
+}
+
+.comment__img {
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #A5DEE4;
+  border-radius: 50%;
+}
+
+.comment__body {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.comment__body-info {
+  display: flex;
+  color: #caccd1;
+}
+
+.comment__body-info-time {
+  min-width: 200px;
+  text-align: right;
+}
+
+.comment__body-info-nickname {
+  color: #33A6B8;
+  flex: 1;
+  text-align: justify;
+  margin: 0 10px 0 0;
+  word-break: break-all;
+}
+
+.comment__body-wrap {
+  display: flex;
+}
+
+.comment__body-content {
+  flex: 1;
+  margin-top: 2px;
+  margin-right: 5px;
+  word-break: break-all;
+  white-space: pre-line;
+}
+
+.comment__btn {
+  display: inline-block;
+  padding: 3px 3px;
+  margin: 2px auto;
+  border: 1px solid #A5DEE4;
+  background-color: transparent;
+  border-radius: 3px;
+  color: #33A6B8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.board__update-nickname {
+  display: inline-block;
+  width: 200px;
+}
+
+.hide {
+  display: none;
+}
+
+
+/* ================ */
+/*  提交留言不完全  */
+/* ================= */
+
+.error {
+  text-align: center;
+  color: #D0104C;
+}
+
+/* ================ */
+/*        分頁       */
+/* ================= */
+
+.paginator {
+  margin-top: 20px;
+  padding: 10px 0;
+  border-top: 1px solid #caccd1;
+}
+
+.paginator__info {
+  text-align: center;
+}
+
+.paginator__pages {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator__pages a {
+  display: inline-block;
+  padding: 3px;
+  margin: 5px 3px;
+  border: 1px solid #A5DEE4;
+  background-color: transparent;
+  border-radius: 3px;
+  color: #33A6B8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.paginator__pages a:hover, .comment__btn:hover {
+  background-color: #33A6B8;
+  color: white;
+}
+
+/* ================ */
+/*    留言板一覽表    */
+/* ================= */
+
+.wrap__table {
+  margin: 20px auto;
+  padding: 0 20px;
+  max-width: 1280px;
+  text-align: center;
+}
+
+table, td, th {
+  border: 1px solid #A5DEE4;
+  border-collapse: collapse;
+}
+
+.table th {
+  padding: 10px 5px;
+  color: white;
+  background-color: #33A6B8;
+}
+
+.table {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.table td {
+  padding: 5px;
+}
+
+.table__btn, .home {
+  padding: 2px;
+  margin-left: 3px;
+  font-size: 14px;
+  color: #33A6B8;
+  border: 1px solid #A5DEE4;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.home {
+  padding: 10px;
+}
+
+.table__btn:hover, .home:hover {
+  color: white;
+  background-color: #33A6B8;
+}
+
+.table__error {
+  padding: 0 3px;
+  font-size: 14px;
+  color: white;
+  background-color: #D0104C;
+  border-radius: 3px;
+}
+
+.table__select {
+  margin-top: 5px;
+}
