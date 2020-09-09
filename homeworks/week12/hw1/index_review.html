@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言版</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/basic.css">
+  <link rel="stylesheet" href="./css/style.css">
+  
+</head>
+<body>
+  <div class="container mt-3 mb-3">
+    <!-- 留言輸入區 -->
+    <form class="add-comment-form jumbotron bg-light">
+      <div class="form-group">
+        <label for="nickname">暱稱：</label>
+        <input type="text" name="nickname" class="form-control" id="nickname">
+      </div>
+      <div class="form-group">
+        <label for="comment-content">留言內容：</label>
+        <textarea name="comment-content" class="form-control" id="comment-content" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">送出</button>
+    </form>
+
+    <!-- 各則留言區 -->
+    <div class="comments">
+    </div>
+    <button class="load-more btn btn-secondary mt-3">載入更多</button>
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    function escape(str) {
+      return str.replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F');
+    }
+
+    function appendCommentToDOM(container, comment, isPrepend) {
+      const html = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${escape(comment.nickname)}</h5>
+            <p class="card-text">${escape(comment.content)}</p>
+          </div>
+        </div>
+      `
+      if (isPrepend) {
+        container.prepend(html)
+      } else {
+        container.append(html)
+      }
+    }
+
+    let show_url = 'http://mentor-program.co/mtr04group1/yunanpan/week12hw1/api_comments_review.php?site_key=anne';
+    const add_url = 'http://mentor-program.co/mtr04group1/yunanpan/week12hw1/api_add_comments.php';
+    const total_url = 'http://mentor-program.co/mtr04group1/yunanpan/week12hw1/api_total_comments.php?site_key=anne';
+    const commentDOM = $('.comments')
+    let lastId = null;
+
+    function getCommentsAPI(before, cb) {
+      if (before) {
+        show_url += `&before=${before}`
+      }
+      $.ajax({
+        url: show_url
+      }).done((data) => {
+        cb(data)
+      })
+    }
+
+    function getComments() {
+      getCommentsAPI(lastId, (data) => {
+        if (!data.ok) {
+          alert(data.message)
+          return
+        }
+
+        const comments = data.discussions;
+        const commentDOM = $('.comments')
+        for (let comment of comments) {
+          appendCommentToDOM(commentDOM, comment)
+        }
+
+        let length = comments.length
+        console.log('length', length)
+        if (length === 0) {
+          $('.load-more').hide()
+        } else {
+          lastId = comments[length - 1].id
+        }
+      })
+    }
+
+    // 當載入時留言總數 <= 5 不顯示載入更多
+    $.ajax({
+      url: total_url
+    }).done((data) => {
+      const total = data.total;
+      if (total <= 5) {
+        $('.load-more').hide()
+      }
+    })
+
+    getComments(); // 一開始載入畫面
+
+    $('.load-more').click(() => {
+      getComments()
+    })
+
+    // 新增留言將資料存到後端
+    $('.add-comment-form').submit(e => {
+      const commentDOM = $('.comments')
+      e.preventDefault(); // 不會真的送出表單
+      // 之後要顯示在畫面上的資料
+      const newCommentData = {
+        'site_key': 'anne',
+        'nickname': $('input[name=nickname]').val(),
+        'content': $('textarea[name=comment-content]').val()
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'http://mentor-program.co/mtr04group1/yunanpan/week12hw1/api_add_comments.php',
+        data: newCommentData // POST 上去的 data
+      }).done((data) => { // reaponse 回來的 data
+        if (!data.ok) {
+          alert(data.message)
+          return
+        }
+        
+        // 清空
+        $('input[name=nickname]').val(''),
+        $('textarea[name=comment-content]').val('')
+        // 新增完內容直接放上去
+        appendCommentToDOM(commentDOM, newCommentData, true)
+      });
+    })
+
+    
+  </script>
+  </div>
+</body>
+</html>
