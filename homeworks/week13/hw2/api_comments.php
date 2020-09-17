@@ -18,7 +18,7 @@
   $site_key = $_GET['site_key'];
 
   $sql = 
-    "select id, nickname, content, created_at from yunanpan_discussions where site_key = ? " .
+    "select id, nickname, content, created_at from yunanpan_discussions where site_key=? " .
     (empty($_GET['before']) ? "" : "and id < ?") .
     " order by id desc limit 5 ";
   $stmt = $conn->prepare($sql);
