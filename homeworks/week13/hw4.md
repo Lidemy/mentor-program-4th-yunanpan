@@ -4,9 +4,7 @@
 
 ## gulp 跟 webpack 有什麼不一樣？
 
-gulp 和 webpack 可以做到很相似的事，像是資源的轉換（babel、sacc/scss 轉 css...等），但本質上是不一樣的。  
-gulp 主要是管理各個任務（function），任務的內容可以自己訂，執行的順序也可以自己訂。  
-webpack 主要是將各個模組與資源打包，而 gulp 自己本身事做不到的，他只能透過 plugin 。
+gulp 和 webpack 可以做到很相似的事，像是資源的轉換（babel、sacc/scss 轉 css...等），但本質上是不一樣的。gulp 主要是管理各個任務（function），任務的內容可以自己訂，執行的順序也可以自己訂。webpack 則主要是將各個模組與資源打包，而 gulp 自己本身是做不到的，他只能透過 plugin。
 webpack 在 src 丟自己寫的就可以透過 config 轉譯並打包 src 的內容。
 
 ## CSS Selector 權重的計算方式為何？
