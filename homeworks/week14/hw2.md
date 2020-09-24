@@ -4,11 +4,11 @@
 
 1. 選擇好區域後可以 Launch instances：
    ![](./img/launch_instances.bmp)
-2. 隨便選了第一個（雖然後知後覺看大家都選 Utunbu），但我已亂選：
+2. 隨便選了第一個（雖然後知後覺看大家都選 Utunbu），但我已亂選XD：
    ![](./img/step1_choose_AMI.bmp)
 3. 第二步選免費的即可：
    ![](./img/step2_choose_instance_type.bmp)
-4. 之後就一步一步，第六步：Congifutre Security Group 主要是在 `EC2` 啟動後，哪些 IP：設定 `aws` 的 `Elastic IPs`  和 PORT 可以連。預設會有 `SSH`，其他的這邊先不設定也沒關係，建立好 instance 後，還可以進 instance 設定。
+4. 之後就一步一步隨意填，第六步：Congifutre Security Group 主要是在 `EC2` 啟動後，哪些 IP：設定 `aws` 的 `Elastic IPs`  和 PORT 可以連。預設會有 `SSH`，其他的這邊先不設定也沒關係，建立好 instance 後，還可以進 instance 設定。
    ![](./img/step6_configure_security_group.bmp)
 5. 全部設定完成後，會需要設定金鑰，記得要將金鑰存取至適當的位置，之後連線、傳送檔案會需要。
 
@@ -38,7 +38,7 @@
 6. 確認是否已啟用：`chkconfig --list httpd`
 7. 測試：在瀏覽器輸入 `Public IPv4 address` 或 `Public IPv4 DNS`，如果有看到 Apache 測試頁（在 /var/www/html 下沒有檔案的前提下），即是成功。
 
-**設定檔案許可**
+**設定檔案許可**  
 如果要可以操作 `/var/www/html` 中的檔案，需修改目錄的所有權和許可。
 1. 將使用者新增至 `Apache` 群組：`sudo usermod -a -G apache ec2-user`
 2. 重新登入，以取得新群組並驗證資格：
@@ -110,5 +110,5 @@
 
 ## 其他
 
-1. 不小心把 TTL 設定得太長，重新設定至新的 IP 時，可以把 `DNS Cache` 刪掉，網域就可以順利連到新的 IP 上。
+1. 不小心把 TTL 設定得太長，重新設定至新的 IP 時，要把 `DNS Cache` 刪掉，網域才可以順利連到新的 IP 上，不然會卡在舊的 IP。
 2. 主網域預設的頁面就是檔案夾下的 index.XXX 的頁面。
