@@ -24,7 +24,7 @@ for(i=0; i<5; i++) {
 ```
 
 `console.log('i: ' + i)` 的部分會依 `i = 0 ~ 4` 迴圈順序輸出。  
-而 `setTimeout(() => {console.log(i)}, i * 1000)` 會在每次迴圈執行的時候丟到 webapi 的區域先放著，並瀏覽器會設定 `i * 1000` 的間格再進到 queue 排隊。等 `console.log('i: ' + i)` 都執行完（stack 清空）後，`console.log(i)` 便會透過 Event Loop 進到 Stack 去執行。只是此時已經是跑完 `for loop` 的狀態，`i` 的值是 `5`，所以後續輸出的都是 `5`。
+而 `setTimeout(() => {console.log(i)}, i * 1000)` 會在每次迴圈執行的時候丟到 webapi 的區域先放著，並且瀏覽器會設定 `i * 1000` 的間格再將第一個參數放到 queue 排隊。等 `console.log('i: ' + i)` 都執行完（stack 清空）後，`() => {console.log(i)}` 便會透過 Event Loop 進到 Stack 去執行。只是此時已經是跑完 `for loop` 的狀態，`i` 的值是 `5`，所以後續輸出的都是 `5`。
 
 ```
 0
@@ -45,3 +45,5 @@ for(i=0; i<5; i++) {
 
 ![](./img/hw2/event_loop_scope-01.png)
 ![](./img/hw2/event_loop_scope-02.png)
+
+註：圖中的 a~b 應為 setTimeout 的第一個參數。
