@@ -1,0 +1,329 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__info {
+  display: flex;
+  margin-left: 20px;
+}
+
+.navbar__name a {
+  margin-right: 20px;
+  font-size: 24px;
+  line-height: 60px;
+  font-weight: bold;
+  color: black;
+}
+
+.navbar__list {
+  font-size: 0;
+}
+
+
+.navbar__list a, .navbar__admin a {
+  display: inline-block;
+  text-align: center;
+  line-height: 60px;
+  font-size: 16px;
+  width: 80px;
+  color: black;
+}
+
+.navbar__list a:hover, .navbar__admin a:hover {
+  color: white;
+  background-color: black;
+}
+
+.navbar__admin {
+  display: flex;
+}
+
+/*=========*/
+/*  header */
+/*==========*/
+
+.header {
+  position: relative;
+  height: 240px;
+  background-color: black;
+  color: white;
+}
+
+.header div {
+  text-align: center;
+  /* margin: auto; */
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.header p {
+  font-size: 14px;
+}
+
+/*=============*/
+/*  article 區 */
+/*==============*/
+
+.wrap {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+.articles {
+  position: absolute;
+  padding: 10px;
+  top: -50px;
+  background-color: white;
+  width: 100%;
+}
+
+.article {
+  margin-bottom: 24px;
+  padding: 28px;
+  border: solid 1px #9a9a9a;
+}
+
+.article__headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.article__edit-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  color: #a8a8a8;
+  border: solid 1px #a8a8a8;
+  font-size: 14px;
+}
+
+.article__info {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #eeeeee;
+  height: 40px;
+}
+
+.article__time, .article__folder {
+  display: flex;
+  margin: 5px;
+  align-items: center;
+}
+
+.article__time img, .article__folder img {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px
+}
+
+.article__time p, .article__folder p {
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+.article__content {
+  margin-top: 18px;
+  margin-bottom: 36px;
+  font-size: 14px;
+  line-height: 2em;
+  word-wrap: break-all;
+  white-space: pre-wrap;
+}
+
+.article__content-overflow {
+  overflow: hidden;
+  height: 136px;
+}
+
+/* white-space 參考：https://developer.mozilla.org/zh-TW/docs/Web/CSS/white-space */
+
+.article__readmore {
+  display: inline-block;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  border: solid 1px #737373;
+  cursor: pointer;
+}
+
+/*====================*/
+/*  login / register  */
+/*====================*/
+
+.form {
+  margin: 50px auto;
+  padding: 73px 65px;
+  max-width: 527px;
+  border: solid 1px black;
+}
+
+.form__title {
+  margin-bottom: 65px;
+  text-align: center;
+  font-size: 36px;
+}
+
+.form__input + .form__input {
+  margin-top: 23px;
+}
+
+.form__input label {
+  display: block;
+}
+
+.form__input input {
+  margin-top: 16px;
+  padding: 5px;
+  width: 100%;
+}
+
+.form__btn {
+  margin-top: 73px;
+  padding: 22px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+/*====================*/
+/*       後臺管理      */
+/*====================*/
+
+.article-edit__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 30px;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+.article-edit__title a {
+  color: black;
+}
+
+.article-edit__info {
+  display: flex;
+  align-items: center;
+}
+
+.article-edit__time {
+  color: #a8a8a8;
+}
+
+.article-edit__btn {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 6px 12px;
+  color: #a8a8a8;
+  border: solid 1px #a8a8a8;
+  font-size: 14px;
+}
+
+.article-edit__btn:hover {
+  color: white;
+  background-color: #a8a8a8;
+}
+
+/*=============*/
+/*  blog edit */
+/*==============*/
+
+.edit-blog {
+  border: solid 1px #9a9a9a;
+  padding: 25px 30px;
+}
+
+.edit-blog h3 {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.edit-blog__title {
+  display: block;
+  margin-bottom: 20px;
+  padding-left: 5px;
+  width: 100%;
+  height: 38px;
+}
+
+.edit-blog__catagory {
+  display: block;
+  margin-bottom: 20px;
+  padding-left: 5px;
+  width: 100%;
+  height: 38px;
+  background-color: #eeeeee;
+}
+
+.edit-blog__textarea {
+  display: block;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.edit-blog__btn {
+  position: relative;
+  height: 40px;
+  margin-bottom: 83px;
+}
+
+.edit-blog__btn input, .edit-blog__btn a {
+  display: block;
+  position: absolute;
+  right: 0px;
+  margin-top: 20px;
+  border: solid 1px #737373;;
+  padding: 14px 40px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+/*====================*/
+/*      錯誤提示      */
+/*====================*/
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+/*====================*/
+/*        分頁        */
+/*====================*/
+
+.paginator {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator a {
+  display: inline-block;
+  margin: 20px 5px 0 5px;
+  padding: 2px 5px;
+  border: solid 1px #a8a8a8;
+  border-radius: 3px;
+  color: black;
+  font-size: 14px;
+}
+
+.paginator a:hover {
+  background-color: #a8a8a8;
+  color: white;
+}
