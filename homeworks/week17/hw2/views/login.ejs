@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just A Bite! 咬一口廚房</title>
+    <link rel="stylesheet" href="/css/basic.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+<body>
+  <form method="POST" action="/login" class="form">
+    <% if (errorMessage) { %>
+      <h3><%= errorMessage %></h3>
+    <% } %>
+    <h2 class="form__title">Log In</h2>
+    <div class="form__input">
+      <label for="username">ADMIN</label>
+      <input type="text" id="username" name="username">
+    </div>
+    <div class="form__input">
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" name="password">
+    </div>
+    <input type="submit" value="SIGN IN" class="form__btn">
+  </form>
+</body>
+</html>

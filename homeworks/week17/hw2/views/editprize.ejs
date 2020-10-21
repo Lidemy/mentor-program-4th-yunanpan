@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just A Bite! 咬一口廚房</title>
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- 導覽列 -->
+  <nav>
+    <div class="navbar">
+      <div class="navbar__logo">
+        Just A Bite!
+      </div>
+      <div class="navbar__options">
+        <a href="/" class="navbar__option navbar__active">抽個大獎</a>
+        <a href="#" class="navbar__option">我要點餐</a>
+        <a href="#" class="navbar__option">查詢訂單</a>
+        <a href="#" class="navbar__option">常見問題</a>
+        <a href="/admin" class="navbar__option">管理後臺</a>
+      </div>
+    </div>
+  </nav>
+
+  <div>
+    <form action="/edit_prize" method="POST">
+      <div>
+        獎品名稱： <input type="text" value="獎品名稱" name="name">
+      </div>
+      <div>
+        圖片網址： <input type="text" value="圖片網址" name="imgLink">
+      </div>
+      <div>
+        說明： <input type="text" value="說明" name="description">
+      </div>
+      <div>
+        機率： <input type="text" value="機率" name="probability">
+      </div>
+      <div>
+        <input type="submit" value="送出">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

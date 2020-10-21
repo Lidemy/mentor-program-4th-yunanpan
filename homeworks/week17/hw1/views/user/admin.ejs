@@ -16,46 +16,35 @@
   <div class="wrap">
     <div class="articles">
       <!-- 一篇一篇 -->
-      <?php while ($row = $result->fetch_assoc()) { ?>
+      <% articles.rows.forEach(article => { %>
       <div class="article-edit__list">
         <div class="article-edit__title">
-          <a href="view_article.php?id=<?php echo escape($row['id']) ?>"><?php echo escape($row['title']) ?></a>
+          <a href="/view_article/<%= article.id %>"><%= article.title %></a>
         </div>
         <div class="article-edit__info">
-          <p class="article-edit__time"><?php echo escape($row['created_at']) ?></p>
-          <a href="update_blog.php?id=<?php echo $row['id'] ?>" class="article-edit__btn">編輯</a>
-          <a href="handle_delete_article.php?id=<?php echo $row['id'] ?>" class="article-edit__btn">刪除</a>
+          <p class="article-edit__time"></p>
+          <a href="/update_article/<%= article.id %>" class="article-edit__btn">編輯</a>
+          <a href="/delete_article/<%= article.id %>" class="article-edit__btn">刪除</a>
         </div>
       </div>
-      <?php } ?>
-      <!-- 分頁 -->
-      <?php
-        // 找 total pages
-        $sql = "SELECT * FROM yunanpan_blog_articles AS A"
-        ." LEFT JOIN yunanpan_blog_users AS U"
-        ." ON A.username = U.username WHERE A.is_deleted = 0 AND U.username = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $_SESSION['username']);
-        $result = $stmt->execute();
-        if (!$result) {
-          die("Error: " . $conn->error);
-        }
-        $result = $stmt->get_result();
-        $items = $result->num_rows;
-        $total_pages = ceil($items / $item_per_page);
-      ?>
+      <% }) %>
+      <!-- TODO: 分頁 -->
+      <%
+        let totalItems = articles.count
+        let totalPages = Math.ceil(totalItems / limit)
+      %>
       <div class="paginator">
-        <?php if ($page != 1) { ?>
-          <a href="admin.php">第一頁</a>
-          <a href="admin.php?page=<?php echo($page - 1) ?>">上一頁</a>
-        <?php } ?>
-        <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-          <a href="admin.php?page=<?php echo $i ?>"><?php echo $i ?></a>
-        <?php } ?>
-        <?php if ($page != $total_pages) { ?>
-          <a href="admin.php?page=<?php echo($page + 1) ?>">下一頁</a>
-          <a href="admin.php?page=<?php echo $total_pages ?>">最後一頁</a>
-        <?php } ?>
+          <a href="/admin">第一頁</a>
+          <% if (page !== 1) { %>
+            <a href="/admin/<%= page-1 %>">上一頁</a>
+          <% } %>
+          <% for (let i = 1; i <= totalPages; i += 1) { %>
+            <a href="/admin/<%= i %>"><%= i %></a>
+          <% } %>
+          <% if (page !== totalPages) { %>
+            <a href="/admin/<%= page+1 %>">下一頁</a>
+          <% } %>
+          <a href="/admin/<%= totalPages %>">最後一頁</a>
       </div>
     </div>
     

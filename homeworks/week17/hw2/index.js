@@ -8,10 +8,10 @@ const bodyParser = require('body-parser')
 const app = express()
 
 // 指定 port
-const port = process.env.PORT || 5011
+const port = process.env.PORT || 5012
 
-const user = require('./controller/user')
-const articles = require('./controller/articles')
+const prize = require('./controller/prize')
+const admin = require('./controller/admin')
 
 // 實作 view 設定
 app.set('view engine', 'ejs')
@@ -23,14 +23,14 @@ app.use(session({
   saveUninitialized: true,
 }))
 
+// 使用 connet-flash
+app.use(flash())
+
 // 使用 body-parser: http://expressjs.com/en/resources/middleware/body-parser.html
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-
-// 使用 connet-flash
-app.use(flash())
 
 // 從哪裡拿 css、img 等靜態檔案
 app.use(express.static(__dirname + '/public'));
@@ -43,38 +43,34 @@ app.use((req, res, next) => {
   next()
 });
 
-// 首頁
-app.get('/', articles.index)
+// TODO: 抽獎頁面
+app.get('/', prize.index)
 
 function redirectBack(req, res) {
   res.redirect('back')
 }
 
-// 管理登入、註冊、後台的路由
-app.get('/login', user.login)
-app.post('/login', user.handleLogin, redirectBack)
-app.get('/logout', user.logout)
-app.get('/register', user.register)
-app.post('/register', user.handleRegister, redirectBack)
-app.get('/admin/:page?', user.admin)
+// 權限管理
+function isAdmin(req, res, next) {
+  if (!req.session.username ) {
+    return res.redirect('/')
+  }
+  next()
+}
 
-// 文章的路由
-app.get('/add', articles.add, redirectBack)
-app.post('/add', articles.handleAdd)
-// 閱讀文章全文
-app.get('/view_article/:id', articles.viewArticle)
-// 刪除
-app.get('/delete_article/:id', articles.delete)
-// 編輯
-app.get('/update_article/:id', articles.update)
-app.post('/update_article/:id', articles.handleUpdate, redirectBack)
+app.get('/admin', admin.login)
+app.post('/login', admin.handleLogin, redirectBack)
 
-// 文章列表
-app.get('/articles_list/:page?', articles.listArticle)
+app.get('/edit_prize', isAdmin, admin.editPrize)
+app.post('/edit_prize', isAdmin, admin.addPrize, redirectBack)
+app.get('/delete_prize/:id', isAdmin, admin.deletePrize)
+app.get('/update_prize/:id', isAdmin, admin.updatePrize)
+app.post('/update_prize/:id', isAdmin, admin.handleUpdatePrize, redirectBack)
+app.get('/logout', admin.logout)
 
-// 分類
-app.get('/category_list/:category?/:page?', articles.category)
+// 抽獎
+app.get('/getprize', prize.getPrize)
 
 app.listen(port, () => {
-  console.log('You are now connected to port' + port)
+  console.log(`You are now connected to port: ${port}`)
 })

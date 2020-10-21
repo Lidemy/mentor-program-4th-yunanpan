@@ -52,50 +52,140 @@ const articles = {
   },
 
   delete: (req, res) => {
-    Comment.findOne({
+    Articles.findOne({
       where: {
         id: req.params.id,
-        UserId: req.session.userId // 身分驗證
+        BlogUserId: req.session.userId // 身分驗證
       }
-    }).then(comment => {
-      console.log('comment', comment)
-      return comment.destroy()
+    }).then(article => {
+      return article.destroy()
     }).then(() => {
-      res.redirect('/')
+      res.redirect('/admin')
     }).catch(() => {
-      res.redirect('/')
+      res.redirect('/admin')
     })
   },
 
   update: (req, res) => {
-    Comment.findOne({
+    console.log('update')
+    Articles.findOne({
       where: {
         id: req.params.id
       }
-    }).then(comment => {
-      res.render('update', {
-        comment
+    }).then(article => {
+      res.render('article/update', {
+        article
       })
     })
   },
 
-  handleUpdate: (req, res) => {
-    Comment.findOne({
+  handleUpdate: (req, res, next) => {
+    Articles.findOne({
       where: {
         id: req.params.id,
-        UserId: req.session.userId // 身分驗證
+        BlogUserId: req.session.userId // 身分驗證
       }
-    }).then(comment => {
-      console.log('comment', comment)
-      return comment.update({
-        content: req.body.content
+    }).then(article => {
+      const {title} = req.body
+      const {catagory} = req.body
+      const {content} = req.body
+      if (!title || !catagory || !content) {
+        req.flash('errorMessage', '資料不齊全')
+        return next()
+      }
+      return article.update({
+        title,
+        catagory,
+        content
       })
     }).then(() => {
-      res.redirect('/')
-    }).catch(() => {
-      res.redirect('/')
+      const id = req.params.id
+      res.redirect(`/view_article/${id}`)
+    }).catch(err => {
+      return next()
     })
+  },
+
+  viewArticle: (req, res) => {
+    Articles.findOne({
+      include: User,
+      where: {
+        id: req.params.id
+      }
+    }).then(article => {
+      // console.log(JSON.stringify(article, null, 4))
+      res.render('article/view_article', {
+        article
+      })
+    })
+  },
+
+  listArticle: (req, res) => {
+    let page
+    if (req.params.page === undefined) {
+      page = 1
+    } else {
+      page = Number(req.params.page)
+    }
+    const limit = 5
+    const offset = (page - 1) * limit
+    return pagination(offset, limit, page, res)
+    // 1. 本來想以路由 articles_list/:page 判斷有無 req.params，但沒有成功
+    //    判斷有無 req.params 參考：https://stackoverflow.com/questions/59915006/express-route-check-if-req-params-parameter-is-empty
+    // 2. 所以改用路由 articles_list/:page? 判斷
+    //    參考：https://stackoverflow.com/questions/28163328/how-change-req-param-if-req-param-undefined
+  },
+
+  category: (req, res) => {
+    const category = req.params.category
+    let page
+    if (req.params.page === undefined) {
+      page = 1
+    } else {
+      page = Number(req.params.page)
+    }
+    const limit = 3
+    const offset = (page - 1) * limit
+
+    if (category === undefined) {
+      res.render('article/category_list')
+    } else {
+      Articles.findAndCountAll({
+        where: {
+          catagory: category
+        },
+        order:  [
+          ['createdAt', 'DESC']
+        ],
+        limit,
+        offset
+      }).then(articles => {
+        res.render('article/category_article', {
+          articles,
+          limit,
+          page
+        })
+      })
+    }
   }
+}
+
+function pagination(offset, limit, page, res) {
+  Articles.findAndCountAll({
+    include: User,
+    order:  [
+      ['createdAt', 'DESC']
+    ],
+    limit,
+    offset
+  }).then(articles => {
+    // console.log(JSON.stringify(articles, null, 4))
+    res.render('article/list_article', {
+      articles,
+      limit,
+      page
+    })
+  })
 }
 
 module.exports = articles

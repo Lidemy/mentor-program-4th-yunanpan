@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 const db = require('../models')
 const User = db.Blog_user
+const Articles = db.Blog_articles
 
 const user = {
   get: (req, res) => {
@@ -87,8 +88,33 @@ const user = {
   },
 
   admin: (req, res) => {
+    let page
+    if (req.params.page === undefined) {
+      page = 1
+    } else {
+      page = Number(req.params.page)
+    }
+    const limit = 5
+    const offset = (page - 1) * limit
+
     if (req.session.username) {
-      res.render('user/admin')
+      Articles.findAndCountAll({
+        include: User,
+        where: {
+          blogUserId: req.session.userId
+        },
+        order:  [
+          ['createdAt', 'DESC']
+        ],
+        limit,
+        offset,
+      }).then(articles => {
+        res.render('user/admin', {
+          articles,
+          limit,
+          page
+        })
+      })
     } else {
       res.redirect('/')
     }

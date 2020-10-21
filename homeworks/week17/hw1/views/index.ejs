@@ -22,7 +22,7 @@
             <h3 class="article__title"><%= article.title %></h3>
             <!-- 要是發表文章的人才看得到 -->
             <% if (username && article.Blog_user.username === username) { %>
-              <a href="" class="article__edit-btn">編輯</a>
+              <a href="/update_article/<%= article.id %>" class="article__edit-btn">編輯</a>
             <% } %>
           </div>
           <div class="article__info">
@@ -42,8 +42,8 @@
               <% } %>
             </div>
           </div>
-          <div class="article__content article__content-overflow"><%= article.content%></div>
-          <a href="" class="article__readmore">
+          <div class="article__content article__content-overflow"><%= article.content %></div>
+          <a href="/view_article/<%= article.id %>" class="article__readmore">
             READ MORE
           </a>
         </div>

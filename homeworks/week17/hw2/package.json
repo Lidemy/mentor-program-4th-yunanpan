@@ -1,5 +1,5 @@
 {
-  "name": "hw1",
+  "name": "hw2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,9 +7,6 @@
     "db:migrate": "npx sequelize db:migrate",
     "start": "npm run db:migrate && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": "12.14.1"
   },
   "author": "",
   "license": "ISC",
