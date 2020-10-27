@@ -43,7 +43,7 @@ app.use((req, res, next) => {
   next()
 });
 
-// TODO: 抽獎頁面
+// 抽獎頁面
 app.get('/', prize.index)
 
 function redirectBack(req, res) {

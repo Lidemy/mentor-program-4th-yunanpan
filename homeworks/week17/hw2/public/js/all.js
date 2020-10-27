@@ -49,34 +49,6 @@ function getPrize(fn) {
   request.send();
 }
 
-
-// TODO: 拿 imgur 圖片
-// function getImgur() {
-//   const imageHash = '0MRI87L'
-//   const request = new XMLHttpRequest()
-//   request.open('GET', `https://api.imgur.com/3/image/${imageHash}`, true)
-
-//   request.setRequestHeader('Authorization', 'Client-ID 730e24f1162d5c6')
-  
-//   request.onload = () => {
-//     if (request.status >= 200 && request.status < 400) {
-//       let result;
-//       try {
-//         result = JSON.parse(request.responseText);
-//       } catch (e) {
-//         alert(errMessage);
-//         return;
-//       }
-//       console.log('imgur result', result.data.link);
-//     } else {
-//       alert(errMessage);
-//     }
-//   };
-//   request.send();
-// }
-
-// getImgur()
-
 // 點 button 監聽事件
 document.querySelector('.prize__btn').addEventListener('click', () => {
   getPrize(getResult);

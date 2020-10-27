@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt')
+
 const saltRounds = 10
 const db = require('../models')
+
 const User = db.Blog_user
 const Articles = db.Blog_articles
 
 const user = {
-  get: (req, res) => {
-  },
 
   // 登入頁面
   login: (req, res) => {
@@ -14,7 +14,7 @@ const user = {
   },
 
   handleLogin: function (req, res, next) {
-    const {username, password} = req.body
+    const { username, password } = req.body
     // 先檢查資料有沒有完整
     if (!username || !password) {
       req.flash('errorMessage', '缺少必要欄位')
@@ -23,8 +23,8 @@ const user = {
 
     User.findOne({
       where: {
-        username
-      }
+        username,
+      },
     }).then(user => {
       if (!user) {
         req.flash('errorMessage', '使用者不存在')
@@ -39,7 +39,7 @@ const user = {
         req.session.userId = user.id
         res.redirect('/')
       })
-    }).catch(err => {
+    }).catch((err) => {
       req.flash('errorMessage', err.toString())
       return next()
     })
@@ -57,7 +57,7 @@ const user = {
   },
 
   handleRegister: (req, res, next) => {
-    const {username, password} = req.body
+    const { username, password } = req.body
     // 先檢查資料是否齊全
     if (!username || !password) {
       req.flash('errorMessage', '缺少必要欄位')
@@ -73,15 +73,15 @@ const user = {
 
       User.create({
         username,
-        passhash: hash
-      }).then(user => {
+        passhash: hash,
+      }).then((newUser) => {
         // 利於之後身分驗證
         req.session.username = username
         // 發文者是誰
-        req.session.userId = user.id
+        req.session.userId = newUser.id
         res.redirect('/')
-      }).catch(err => {
-        req.flash('errorMessage', err.toString())
+      }).catch((e) => {
+        req.flash('errorMessage', e.toString())
         return next()
       })
     })
@@ -101,24 +101,24 @@ const user = {
       Articles.findAndCountAll({
         include: User,
         where: {
-          blogUserId: req.session.userId
+          blogUserId: req.session.userId,
         },
-        order:  [
-          ['createdAt', 'DESC']
+        order: [
+          ['createdAt', 'DESC'],
         ],
         limit,
         offset,
-      }).then(articles => {
+      }).then((articles) => {
         res.render('user/admin', {
           articles,
           limit,
-          page
+          page,
         })
       })
     } else {
       res.redirect('/')
     }
-  }
+  },
 }
 
 module.exports = user
