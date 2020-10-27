@@ -20,6 +20,11 @@ module.exports = {
     'react',
   ],
   rules: {
-    "no-console": "off"
+    "no-console": "off",
+    "linebreak-style": "off",
+    "semi": "off",
+    "no-shadow": "off",
+    "no-alert": "off",
+    "consistent-return": "off"
   },
 };
