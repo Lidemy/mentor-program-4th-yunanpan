@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<%- include('../template/head') %>
+<body>
+  <!-- navbar -->
+  <%- include('../template/navbar') %>
+  <!-- 存放技術之地 -->
+  <header class="header">
+    <div>
+      <h2>存放技術之地</h2>
+      <% if (articles.rows[0].catagory === 1) { %>
+        <p>農場文</p> 
+      <% } else if (articles.rows[0].catagory === 2) { %>
+        <p>廢文</p>
+      <% } else { %>
+        <p>聳動標題騙點閱文</p>
+      <% } %>
+    </div>
+  </header>
+  <!-- 編輯 article 區 -->
+  <div class="wrap">
+    <div class="articles">
+      <!-- 一篇一篇 -->
+      <% articles.rows.forEach(article => { %>
+        <div class="article-edit__list">
+          <div class="article-edit__title">
+            <a href="/view_article/<%= article.id %>"><%= article.title %></a>
+          </div>
+          <div class="article-edit__info">
+            <p class="article-edit__time"><%= article.createdAt.toLocaleString() %></p>
+          </div>
+        </div>
+      <% }) %>
+      <!-- 分頁 -->
+      <%
+        let totalItems = articles.count
+        let totalPages = Math.ceil(totalItems / limit)
+        let category = articles.rows[0].catagory
+      %>
+      <div class="paginator">
+          <a href="/category_list/<%= category %>">第一頁</a>
+          <% if (page !== 1) { %>
+            <a href="/category_list/<%= category %>/<%= page-1 %>">上一頁</a>
+          <% } %>
+          <% for (let i = 1; i <= totalPages; i += 1) { %>
+            <a href="/category_list/<%= category %>/<%= i %>"><%= i %></a>
+          <% } %>
+          <% if (page !== totalPages) { %>
+            <a href="/category_list/<%= category %>/<%= page+1 %>">下一頁</a>
+          <% } %>
+          <a href="/category_list/<%= category %>/<%= totalPages %>">最後一頁</a>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
