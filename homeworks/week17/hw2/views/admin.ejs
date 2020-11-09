@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just A Bite! 咬一口廚房</title>
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- 導覽列 -->
+  <nav>
+    <div class="navbar">
+      <div class="navbar__logo">
+        Just A Bite!
+      </div>
+      <div class="navbar__options">
+        <a href="/" class="navbar__option navbar__active">抽個大獎</a>
+        <a href="#" class="navbar__option">我要點餐</a>
+        <a href="#" class="navbar__option">查詢訂單</a>
+        <a href="#" class="navbar__option">常見問題</a>
+        <a href="/logout" class="navbar__option">管理員登出</a>
+      </div>
+    </div>
+  </nav>
+
+  <div>
+    <a href="/edit_prize">新增</a>
+    <table>
+      <tr>
+        <th>獎品名稱</th>
+        <th>圖片網址</th>
+        <th>說明</th>
+        <th>機率</th>
+        <th></th>
+      </tr>
+      <% prizes.forEach(prize => { %>
+        <tr>
+          <td><%= prize.name %></td>
+          <td><%= prize.imgLink %></td>
+          <td><%= prize.description %></td>
+          <td><%= prize.probability %></td>
+          <td>
+            <a href="/update_prize/<%= prize.id %>">編輯</a>
+            <a href="/delete_prize/<%= prize.id %>">刪除</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+</body>
+</html>

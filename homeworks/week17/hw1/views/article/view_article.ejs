@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<%- include('../template/head') %>
+<body>
+  <!-- navbar -->
+  <%- include('../template/navbar') %>
+  <!-- 存放技術之地 -->
+  <header class="header">
+    <div>
+      <h2>存放技術之地</h2>
+      <p>Welcome to my blog</p> 
+    </div>
+  </header>
+  <!-- article 區 -->
+  <div class="wrap">
+    <div class="articles">
+      <!-- article -->
+      <div class="article">
+        <div class="article__headline">
+          <h3 class="article__title"><%= article.title %></h3>
+          <% if (article.Blog_user.username === username) { %>
+            <div>
+              <a href="/update_article/<%= article.id %>" class="article__edit-btn">編輯</a>
+              <a href="/delete_article/<%= article.id %>" class="article__edit-btn">刪除</a>
+            </div>
+          <% } %>
+        </div>
+        <div class="article__info">
+          <div class="article__time">
+            <img src="/img/watch-later-24-px.png" >
+            <p><%= article.createdAt.toLocaleString() %></p>
+          </div>
+          <div class="article__folder">
+            <img src="/img/folder-24-px.png" >
+            <% if (article.catagory === 1) { %>
+              <p>農場文</p>
+            <% } else if (article.catagory === 2) { %>
+              <p>廢文</p>
+            <% } else { %>
+              <p>聳動標題騙點閱文</p>
+            <% } %>
+          </div>
+        </div>
+        <div class="article__content"><%= article.content %></div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
