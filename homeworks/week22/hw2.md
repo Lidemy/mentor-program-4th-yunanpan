@@ -1,7 +1,7 @@
 ## 請列出 React 內建的所有 hook，並大概講解功能是什麼
 
 ### 1. useState：
-
+ 
 `const [state, setState] = useState(初始值);`
 
 回傳一個 `state` 的值，`setState` 是更新 `state` 的 `function`。可以根據需求自定義 `state` 的名稱。像是 Todo List 可以設定成：`const [todos, setTodos] = useState([])`。在還未 `setState` 前，得到的 `state` 值會是 `useState` 一開始設定的初始值，初始值也可以是 `function`。
@@ -309,7 +309,7 @@ class App extends React.Component {
 }
 ```
 在輸入 tes 時送出：
-![](./img/classComponent01.png)
+![](./img/classComponent01.PNG)
 在按下送出後多打一個 t，之後跳出的視窗會是 test，而非當時的 tes。
 ![](./img/classComponent02.png)
 （不會 gif 只好用截圖...）
