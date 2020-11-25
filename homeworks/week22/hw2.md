@@ -212,7 +212,7 @@ function TextInputWithFocusButton() {
 
 ## 請列出 class component 的所有 lifecycle 的 method，並大概解釋觸發的時機點
 
-![](./img/lifecycles.png)
+![](./img/lifecycles.PNG)
 擷取自 [React 官方提供 lifecycles 表](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 ### **1. constructor**
@@ -311,7 +311,7 @@ class App extends React.Component {
 在輸入 tes 時送出：
 ![](./img/classComponent01.PNG)
 在按下送出後多打一個 t，之後跳出的視窗會是 test，而非當時的 tes。
-![](./img/classComponent02.png)
+![](./img/classComponent02.PNG)
 （不會 gif 只好用截圖...）
 
 以下是以 function component 改寫：
@@ -339,9 +339,9 @@ function App() {
 ```
 
 在輸入 tes 時送出：
-![](./img/functionComponent01.png)
+![](./img/functionComponent01.PNG)
 在按下送出後多打一個 t，之後跳出的視窗依舊顯示是 tes，而非最新的 test。
-![](./img/functionComponent02.png)
+![](./img/functionComponent02.PNG)
 
 當再次改變 `input` 的輸入值時，雖然 `user` 的值有變動，但因為送出的按鈕是隸屬於前次 function，所以拿到的值也是前次的（tes）。如果想在 function component 中拿到最新的值，就需要搭配 `useRef` 一起使用。
 
